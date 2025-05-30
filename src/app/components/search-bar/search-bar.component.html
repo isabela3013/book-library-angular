@@ -1,8 +1,23 @@
-<div class="search-container">
-    <input
-        type="text"
-        placeholder="Busca libros por título o autor..."
-        [(ngModel)]="searchTerm"
-        (keyup.enter)="onSearch()">
-    <button (click)="onSearch()">Buscar</button>
+<div class="search-container m-2 gap-2">
+    <div class="flex">
+        <input
+            type="text"
+            placeholder="Buscar libros..."
+            pInputText
+            [(ngModel)]="searchTerm"
+            (keyup.enter)="onSearch()"
+            class="w-full items-center justify-center rounded-xl border bg-gray-900 p-2 text-sm outline-none">
+
+        <button
+            class="linear flex items-right rounded-full bg-blue-400 p-2 text-sm font-medium text-brand-500 transition duration-200 hover:cursor-pointer hover:bg-blue-300 active:bg-blue-200 rounded-xl"
+            (click)="onSearch()"
+        >
+            Buscar
+        </button>
+    </div>
+    <!-- <div>
+        <p>Año de Publicación</p>
+        <input type="text" pInputText [(ngModel)]="value" class="w-full mb-4"/>
+        <p-slider [(ngModel)]="value" class="w-full" />
+    </div> -->
 </div>

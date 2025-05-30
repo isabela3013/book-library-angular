@@ -1,5 +1,13 @@
-<div class="book-card" (click)="onSelectBook()">
-    <img [src]="getThumbnailUrl()" alt="{{ book?.volumeInfo?.title || 'Título desconocido' }}">
+<div
+    class="book-card w-full p-2 items-center justify-center rounded-xl border"
+    (click)="onSelectBook()"
+>
+    <img
+        class="w-100"
+        [src]="getThumbnailUrl()"
+        alt="{{ book?.volumeInfo?.title || 'Título desconocido' }}"
+    >
+        
     <div class="book-info">
         <h3>{{ book?.volumeInfo?.title || 'Título desconocido' }}</h3>
         <p class="authors">{{ book?.volumeInfo?.authors?.join(', ') || 'Autor desconocido' }}</p>

@@ -11,6 +11,9 @@ export class SearchBarComponent {
   // 1. Variable para almacenar el término de búsqueda
   searchTerm: string = '';
 
+  // Filter
+  value: number = 50;
+
   // 2. EventEmitter tipado como 'string'
   // Es crucial que sea `EventEmitter<string>`
   @Output() searchPerformed = new EventEmitter<string>();
