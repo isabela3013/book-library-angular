@@ -1,0 +1,15 @@
+<app-search-bar (searchPerformed)="onSearchPerformed($event)"></app-search-bar>
+
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+
+<div *ngIf="!isLoading && books.length === 0 && searchTerm">
+    <p class="no-results-message">No se encontraron libros para "{{ searchTerm }}".</p>
+</div>
+
+<div *ngIf="!isLoading && books.length > 0">
+    <app-book-list [books]="books" (bookSelected)="onBookSelected($event)"></app-book-list>
+</div>
+
+<div *ngIf="errorMessage" class="error-message">
+    <p>Error: {{ errorMessage }}</p>
+</div>

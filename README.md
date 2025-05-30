@@ -47,7 +47,7 @@ Sigue estos pasos para levantar el proyecto en tu máquina local:
     ```
     Una vez iniciado, la aplicación estará disponible en tu navegador en `http://localhost:4200/`.
 
----
+
 
 ## 📌 Estructura del Proyecto
 
@@ -63,18 +63,18 @@ El proyecto está organizado en componentes modulares y servicios para una clara
 * **`BookService`**: Servicio encargado de la comunicación con la API de Google Books.
 * **`app-routing.module.ts`**: Configuración de las rutas de navegación.
 
----
+
 
 ## 📝 Licencia
 
 Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para más detalles.
 
----
+
 
 ## 📧 Contacto
 
 Si tienes alguna pregunta o sugerencia, no dudes en contactarme.
 
----
+
 
 **Nota:** Este es un proyecto de demostración para practicar el uso de Angular y la integración con APIs públicas.
