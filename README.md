@@ -3,7 +3,6 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d2aeab4d-9699-44e5-a82b-3b0af5688a2f/deploy-status)](https://app.netlify.com/projects/by-isa-book-library/deploys)
 
 
-
 Un proyecto sencillo y rápido en Angular para buscar libros por título o autor, consumiendo la API pública de Google Books. Permite ver una lista de resultados y navegar a una página de detalles para cada libro.
 
 ---
