@@ -1,0 +1,7 @@
+<div class="book-card" (click)="onSelectBook()">
+    <img [src]="getThumbnailUrl()" alt="{{ book?.volumeInfo?.title || 'Título desconocido' }}">
+    <div class="book-info">
+        <h3>{{ book?.volumeInfo?.title || 'Título desconocido' }}</h3>
+        <p class="authors">{{ book?.volumeInfo?.authors?.join(', ') || 'Autor desconocido' }}</p>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="book-list-grid">
+    <app-book-item
+        *ngFor="let book of books"
+        [book]="book"
+        (bookSelected)="onBookItemSelect($event)"> </app-book-item>
+
+    <p *ngIf="books.length === 0" class="no-books-found">No hay libros para mostrar.</p>
+</div>
