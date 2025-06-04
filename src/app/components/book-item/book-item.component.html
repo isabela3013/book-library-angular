@@ -1,15 +1,27 @@
-<div
-    class="book-card w-full p-2 items-center justify-center rounded-xl border"
-    (click)="onSelectBook()"
->
-    <img
-        class="w-100"
-        [src]="getThumbnailUrl()"
-        alt="{{ book?.volumeInfo?.title || 'Título desconocido' }}"
+<div class="relative w-full p-2 rounded-xl bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 hover:dark:bg-gray-700">
+    <!-- Main card clickable area -->
+    <div
+        class="cursor-pointer"
+        (click)="onSelectBook()"
     >
-        
-    <div class="book-info">
-        <h3>{{ book?.volumeInfo?.title || 'Título desconocido' }}</h3>
-        <p class="authors">{{ book?.volumeInfo?.authors?.join(', ') || 'Autor desconocido' }}</p>
+        <div class="flex gap-2">
+            <img
+                class="max-w-[150px] max-h-[150px]"
+                [src]="getThumbnailUrl()"
+                alt="{{ book?.volumeInfo?.title || 'Título desconocido' }}"
+            >
+            <div class="book-info">
+                <h3 class="text-xl">{{ book?.volumeInfo?.title || 'Título desconocido' }}</h3>
+                <p class="authors">{{ book?.volumeInfo?.authors?.join(', ') || 'Autor desconocido' }}</p>
+            </div>
+        </div>
     </div>
+
+    <!-- Favorite heart button -->
+    <button
+        class="absolute bottom-2 right-2 w-12 h-12 rounded-full items-center p-2 bg-white dark:bg-gray-700 shadow-md hover:bg-gray-100 dark:hover:bg-gray-600 transition"
+        (click)="toggleFavorite(); $event.stopPropagation()"
+    >
+        <i class="pi text-pink-500 text-xl" [ngClass]="isFavorite ? 'pi-heart-fill' : 'pi-heart'"></i>
+    </button>
 </div>

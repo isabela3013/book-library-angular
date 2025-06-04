@@ -6,50 +6,70 @@
 
     <div *ngIf="errorMessage" class="detail-error">
         <p>{{ errorMessage }}</p>
-        <button (click)="goBackToList()">Volver a la lista</button>
+        <button
+            class="flex p-2 rounded-xl linear items-right bg-primary-300 dark:bg-primary-300 text-sm font-medium text-brand-500 transition duration-200 hover:cursor-pointer hover:bg-primary-100 active:bg-blue-200 "
+            (click)="goBackToList()"
+        >
+            Volver a la lista
+        </button>
     </div>
 
-    <div *ngIf="book && !isLoading && !errorMessage" class="book-content">
-        <div class="book-cover">
-            <img [src]="getCoverImage()" alt="{{ book.volumeInfo?.title || 'Portada de libro' }}">
-        </div>
-        <div class="book-info">
-            <h1>{{ book.volumeInfo?.title || 'Título desconocido' }}</h1>
-            <h2 class="authors">{{ book.volumeInfo?.authors?.join(', ') || 'Autor desconocido' }}</h2>
-
-            <div class="meta-info">
-                <p *ngIf="book.volumeInfo?.publishedDate"><strong>Fecha de Publicación:</strong> {{ book.volumeInfo.publishedDate }}</p>
-                <p *ngIf="book.volumeInfo?.publisher"><strong>Editorial:</strong> {{ book.volumeInfo.publisher }}</p>
-                <p *ngIf="book.volumeInfo?.pageCount"><strong>Páginas:</strong> {{ book.volumeInfo.pageCount }}</p>
-                <p *ngIf="book.volumeInfo?.language"><strong>Idioma:</strong> {{ book.volumeInfo.language }}</p>
-                <p *ngIf="book.volumeInfo?.averageRating"><strong>Calificación:</strong> {{ book.volumeInfo.averageRating }} ({{ book.volumeInfo.ratingsCount }} votos)</p>
-                <p *ngIf="book.volumeInfo?.printType"><strong>Tipo de Impresión:</strong> {{ book.volumeInfo.printType }}</p>
-
-                <ng-container *ngIf="book.volumeInfo?.industryIdentifiers">
-                    <p>
-                        <strong>ISBN:</strong>
-                        <span *ngFor="let identifier of book.volumeInfo.industryIdentifiers; last as isLast">
-                            {{ identifier.type }}: {{ identifier.identifier }}<span *ngIf="!isLast">, </span>
-                        </span>
-                    </p>
-                </ng-container>
-
-                <p *ngIf="book.volumeInfo?.categories">
-                    <strong>Categorías:</strong>
-                    {{ book.volumeInfo.categories.join(', ') }}
-                </p>
-            </div>
-
-            <div class="description" *ngIf="book.volumeInfo?.description">
-                <h3>Sinopsis</h3>
-                <div [innerHTML]="book.volumeInfo.description"></div>
-            </div>
+    <div *ngIf="book && !isLoading && !errorMessage" class="book-content ">
+        <div class="flex justify-between items-center m-3">
+            <button
+                class="p-2 rounded-xl linear text-sm items-center align-center font-medium text-brand-500 transition duration-200 hover:cursor-pointer hover:bg-gray-300 hover:dark:bg-gray-700 active:bg-blue-200"
+                (click)="goBackToList()"
+            >
+                <span class="pi pi-arrow-circle-left mr-2"></span>
+                Volver a la Lista
+            </button>
 
             <div class="preview-link" *ngIf="book.volumeInfo?.previewLink">
-                <a [href]="book.volumeInfo.previewLink" target="_blank" rel="noopener noreferrer">Ver Vista Previa en Google Books</a>
+                <a class="underline" [href]="book.volumeInfo.previewLink" target="_blank" rel="noopener noreferrer">
+                    Ver Vista Previa en Google Books
+                </a>
             </div>
-
-            <button (click)="goBackToList()" class="back-button">Volver a la Lista</button>
         </div>
+
+        <div class="flex">
+            <div class="book-cover w-1/4 justify-items-center">
+                <img class="w-3/4 " [src]="getCoverImage()" alt="{{ book.volumeInfo?.title || 'Portada de libro' }}">
+            </div>
+            <div class="book-info w-3/4">
+                <h1 class="text-3xl mb-2">
+                    {{ book.volumeInfo?.title || 'Título desconocido' }}
+                </h1>
+                <h2 class="text-xl mb-2 italic">{{ book.volumeInfo?.authors?.join(', ') || 'Autor desconocido' }}</h2>
+
+                <div class="meta-info">
+                    <p *ngIf="book.volumeInfo?.publishedDate"><strong>Fecha de Publicación:</strong> {{ book.volumeInfo.publishedDate }}</p>
+                    <p *ngIf="book.volumeInfo?.publisher"><strong>Editorial:</strong> {{ book.volumeInfo.publisher }}</p>
+                    <p *ngIf="book.volumeInfo?.pageCount"><strong>Páginas:</strong> {{ book.volumeInfo.pageCount }}</p>
+                    <p *ngIf="book.volumeInfo?.language"><strong>Idioma:</strong> {{ book.volumeInfo.language }}</p>
+                    <p *ngIf="book.volumeInfo?.averageRating"><strong>Calificación:</strong> {{ book.volumeInfo.averageRating }} ({{ book.volumeInfo.ratingsCount }} votos)</p>
+                    <p *ngIf="book.volumeInfo?.printType"><strong>Tipo de Impresión:</strong> {{ book.volumeInfo.printType }}</p>
+
+                    <ng-container *ngIf="book.volumeInfo?.industryIdentifiers">
+                        <p>
+                            <strong>ISBN:</strong>
+                            <span *ngFor="let identifier of book.volumeInfo.industryIdentifiers; last as isLast">
+                                {{ identifier.type }}: {{ identifier.identifier }}<span *ngIf="!isLast">, </span>
+                            </span>
+                        </p>
+                    </ng-container>
+
+                    <p *ngIf="book.volumeInfo?.categories">
+                        <strong>Categorías:</strong>
+                        {{ book.volumeInfo.categories.join(', ') }}
+                    </p>
+                </div>
+
+                <div class="description" *ngIf="book.volumeInfo?.description">
+                    <h3 class="text-lg mt-2 font-bold">Sinopsis</h3>
+                    <div [innerHTML]="book.volumeInfo.description"></div>
+                </div>
+            </div>
+        </div>
+        
     </div>
 </div>

@@ -1,8 +1,13 @@
+import { NgClass } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-book-item',
-  imports: [],
+  imports: [
+    ButtonModule,
+    NgClass
+  ],
   templateUrl: './book-item.component.html',
   styleUrl: './book-item.component.scss'
 })
@@ -33,5 +38,11 @@ export class BookItemComponent {
   getThumbnailUrl(): string {
     return this.book?.volumeInfo?.imageLinks?.thumbnail || 'assets/default-book.png';
     // Asegúrate de tener una imagen 'default-book.png' en la carpeta assets si la usas.
+  }
+
+  isFavorite = false;
+
+  toggleFavorite(): void {
+    this.isFavorite = !this.isFavorite;
   }
 }
